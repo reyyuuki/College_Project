@@ -3,54 +3,95 @@ import 'package:html/parser.dart';
 import 'package:http/http.dart' as http;
 
 class Scrapper {
-  String baseUrl = "https://apsraipur.in/";
+  String baseUrl = "https://laidlawschool.org/";
   Future<dynamic> homePageScrapper() async {
     try {
       final response = await http.get(Uri.parse(baseUrl));
       if (response.statusCode == 200) {
-        final images = [];
         final document = parse(response.body);
         final mainCarousale =
-            document.querySelectorAll('.carousel-inner .item');
-        if (mainCarousale.isNotEmpty) {
-          for (var item in mainCarousale) {
-            final image = item.querySelector("img")?.attributes['src'] ?? '';
-            images.add({"image": image});
-          }
+            document.querySelectorAll('.swiper-container.white-move .swiper-wrapper div');
+         final imageUrls = mainCarousale.map((element) {
+        final style = element.attributes['style'];
+        if (style != null && style.contains('url(')) {
+          final startIndex = style.indexOf('url(') + 4;
+          final endIndex = style.indexOf(')', startIndex);
+          return {"image": style.substring(startIndex, endIndex).replaceAll("'", "")};
         }
-        String thumbnail =
-            "https://apsraipur.in/wp-content/uploads/2023/01/APS-SN-VIDEO-IMG.jpg";
-        final thumbNailLink = document
-            .querySelector(".container .row .col-md-12 div a")
-            ?.attributes['href'];
+        return '';
+      }).where((url) => url.toString().isNotEmpty).toList();
 
-        final facilitiesImages = [];
-        final facilitiesElements = document
-            .querySelectorAll("#swiper-wrapper-0a5f524ef8aa919d .swiper-slide");
-        if (facilitiesElements.isNotEmpty) {
-          for (var facilitiesElement in facilitiesElements) {
-            final image = facilitiesElement
-                .querySelector(".team-image img")
-                ?.attributes['src'];
-            final title = facilitiesElement
-                .querySelector("figcaption div div")
+        // String thumbnail =
+        //     "https://apsraipur.in/wp-content/uploads/2023/01/APS-SN-VIDEO-IMG.jpg";
+        // final thumbNailLink = document
+        //     .querySelector(".container .row .col-md-12 div a")
+        //     ?.attributes['href'];
+
+        final figures = [];
+        final figuresElement = document
+            .querySelectorAll(".row.row-cols-2.row-cols-md-5.row-cols-sm-3 div");
+        if (figuresElement.isNotEmpty) {
+          for (var figureElement in figuresElement) {
+            final number = figureElement
+                .querySelector("h2")?.attributes['data-to'];
+            final title = figureElement
+                .querySelector("span")
                 ?.text
                 .trim();
-            facilitiesImages.add({"image": image, "title": title});
+            figures.add({"figure": number, "title": title});
           }
         }
-        log(facilitiesImages.toString());
+        
+        final notices = [];
+        final noticeElement = document
+            .querySelectorAll(".ml-2.mr-2 div");
+        if (noticeElement.isNotEmpty) {
+          for (var item in noticeElement) {
+            final link = item
+                .querySelector("a")?.attributes['href'];
+            final title = item
+                .querySelector("a")
+                ?.text
+                .trim();
+                if(link != null && title != null){
+                  notices.add({"link": link, "title": title});
+                }   
+          }
+        }
+
+        final events = [];
+        document
+            .querySelectorAll(".swiper-simple-arrow-style-1 div").map((item){
+              item.querySelectorAll("div div").map((img){
+                final image = img.querySelector("a img")?.attributes['data-src'];
+                final link = img.querySelector("a")?.attributes['href'];
+                if(image != null && link != null){
+                events.add({"image": image, "link": link});
+                }
+              }).toList();
+            }).toList();
+
+          final activities = document.querySelectorAll("section.padding-4-rem-top > div div div").map((item){
+              final image = item.querySelector("a img")?.attributes['data-src'];
+                final link = item.querySelector("a")?.attributes['href'];
+                if(image != null && link != null){
+                return({"image": image, "link": link});
+                }
+          }).toList();
+
+          log(imageUrls.toString());
         return {
-          "thumbnail": thumbnail,
-          "videoUrl": thumbNailLink,
-          "facilities": facilitiesImages,
-          "images": images,
+          "events":events,
+          "notices": notices,
+          "facilities": figures,
+          "images": imageUrls,
         };
       }
     } catch (e) {
       log("error while scrapping home page: $e");
     }
   }
+  
 
   Future<dynamic> facilities() async {
     try {
