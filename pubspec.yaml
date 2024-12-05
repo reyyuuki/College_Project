@@ -7,10 +7,16 @@ environment:
   sdk: '>=3.4.4 <4.0.0'
 
 dependencies:
+  custom_sliding_segmented_control: ^1.8.4
+  dynamic_color: ^1.7.0
+  cached_network_image: ^3.4.1
   flutter:
     sdk: flutter
   html: ^0.15.0
   http: ^1.2.2
+  provider:
+  shimmer: ^3.0.0
+  flutter_animate: ^4.5.2
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +25,24 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: broken
+      fonts:
+        - asset: assets/fonts/broken.ttf
+    - family: broken_filled
+      fonts:
+        - asset: assets/fonts/broken_filled.ttf
+    - family: LexendDeca
+      fonts:
+        # - asset: assets/fonts/LexendDeca/LexendDeca-Black.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-Bold.ttf
+        # - asset: assets/fonts/LexendDeca/LexendDeca-ExtraBold.ttf
+        # - asset: assets/fonts/LexendDeca/LexendDeca-ExtraLight.ttf
+        
+    - family: LexendDeca-thin
+      fonts:
+        # - asset: assets/fonts/LexendDeca/LexendDeca-Medium.ttf
+        # - asset: assets/fonts/LexendDeca/LexendDeca-Regular.ttf
+        - asset: assets/fonts/LexendDeca/LexendDeca-Light.ttf
+        # - asset: assets/fonts/LexendDeca/LexendDeca-SemiBold.ttf
+        # - asset: assets/fonts/LexendDeca/LexendDeca-Thin.ttf
