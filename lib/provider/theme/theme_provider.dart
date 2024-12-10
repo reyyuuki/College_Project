@@ -7,6 +7,8 @@ import 'package:hive/hive.dart';
 
 class ThemeProvider with ChangeNotifier {
   ThemeData? _themeData;
+  double? _glowValue;
+  double? _blurValue;
   Color _seedColor = Colors.purple;
   bool _isDarkMode = false;
   bool _isLightMode = true;
@@ -19,15 +21,19 @@ class ThemeProvider with ChangeNotifier {
   bool get isMaterial => _isMaterial;
   Color get seedColor => _seedColor;
   String get varient => _variant;
+  double? get glowValue => _glowValue;
+  double? get blurValue => _blurValue;
 
   DynamicSchemeVariant palette = DynamicSchemeVariant.tonalSpot;
 
   ThemeProvider() {
     var box = Hive.box("app-data");
+    _blurValue = box.get("blurValue",defaultValue: 0.5);
+    _glowValue = box.get("glowValue",defaultValue: 1.0);
     _isDarkMode = box.get("isDarkMode", defaultValue: false);
     _isLightMode = box.get("isLightMode", defaultValue: true);
     _isMaterial = box.get("isMaterial", defaultValue: true);
-    _variant = box.get("palette", defaultValue: "TonalSpot");
+    _variant = box.get("palette", defaultValue: "TonalSpot"); 
     setPaletteColor(_variant);
     if (_isMaterial) {
       materialTheme();
@@ -38,6 +44,19 @@ class ThemeProvider with ChangeNotifier {
     }
     log("new ${_seedColor.toString()}");
     updateTheme();
+  }
+
+  void resetSetting(){
+    final box = Hive.box("app-data");
+    box.clear();
+    _blurValue = 1.0;
+    _glowValue = 0.6;
+    _isDarkMode = false;
+    _isLightMode = true;
+    _isMaterial = true;
+    _variant = "TonalSpot"; 
+    setPaletteColor(_variant);
+    materialTheme();
   }
 
   void updateTheme() {
@@ -168,5 +187,15 @@ Future<void> materialTheme() async {
       800: color.withOpacity(.9),
       900: color.withOpacity(1),
     };
+  }
+
+  void glowMultiplier(double value){
+    _glowValue = value;
+    Hive.box("app-data").put("glowValue",value);
+  }
+
+  void bluerMultiplier(double value){
+    _blurValue = value;
+    Hive.box("app-data").put("blurValue",value);
   }
 }
