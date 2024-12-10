@@ -58,6 +58,14 @@ class _AboutDetailsState extends State<AboutDetails> {
                       child: CachedNetworkImage(
                         imageUrl: widget.image,
                         fit: BoxFit.cover,
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: Colors.grey[900]!,
+                          highlightColor: Colors.grey[700]!,
+                          child: Container(
+                            color: Colors.grey[400],
+                            height: 100,
+                          ),
+                        ),
                       )),
                 ),
               ),
@@ -117,6 +125,7 @@ class _AboutDetailsState extends State<AboutDetails> {
                               imageUrl: data!['image']!,
                               filterQuality: FilterQuality.high,
                               height: 200,
+                              width: 150,
                               fit: BoxFit.cover,
                               placeholder: (context, url) => Shimmer.fromColors(
                                 baseColor: Colors.grey[900]!,
@@ -124,6 +133,7 @@ class _AboutDetailsState extends State<AboutDetails> {
                                 child: Container(
                                   color: Colors.grey[400],
                                   height: 200,
+                                  width: 150,
                                 ),
                               ),
                               errorWidget: (context, error, stackTrace) {

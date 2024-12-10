@@ -1,8 +1,6 @@
 import 'package:agarwal_school/core/icons/icons_broken.dart';
 import 'package:agarwal_school/fallback_data/backup_data.dart';
-import 'package:agarwal_school/screens/events/event_details.dart';
 import 'package:agarwal_school/ui/about_layouts.dart/about_image_list.dart';
-import 'package:agarwal_school/ui/events_layout_widgets/images_list.dart';
 import 'package:agarwal_school/ui/widgets/glowing_list.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +24,7 @@ class _AboutState extends State<About> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Academic Events",
+                  "Academic Us",
                   style: TextStyle(
                     fontSize: 24,
                     fontFamily: "LexendDeca",

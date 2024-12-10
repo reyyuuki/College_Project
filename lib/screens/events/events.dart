@@ -4,7 +4,6 @@ import 'package:agarwal_school/fallback_data/backup_data.dart';
 import 'package:agarwal_school/ui/events_layout_widgets/events_title_list.dart';
 import 'package:agarwal_school/ui/events_layout_widgets/images_list.dart';
 import 'package:agarwal_school/ui/events_layout_widgets/staggered_grid_view.dart';
-import 'package:agarwal_school/ui/widgets/glowing_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
