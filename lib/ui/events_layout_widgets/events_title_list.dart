@@ -1,6 +1,8 @@
 import 'package:agarwal_school/core/icons/icons_broken.dart';
+import 'package:agarwal_school/provider/theme/theme_provider.dart';
 import 'package:agarwal_school/screens/events/event_details.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class EventsTitleList extends StatelessWidget {
   const EventsTitleList({
@@ -12,6 +14,7 @@ class EventsTitleList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ThemeProvider>(context,listen: false);
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(20),
@@ -87,8 +90,8 @@ class EventsTitleList extends StatelessWidget {
                               color: Theme.of(context)
                                   .colorScheme
                                   .primary
-                                  .withOpacity(0.4),
-                              blurRadius: 5,
+                                  .withOpacity(provider.glowValue!),
+                              blurRadius: 5 * provider.blurValue!,
                             )
                           ]),
                       child: Icon(

@@ -1,5 +1,7 @@
 import 'package:agarwal_school/core/icons/icons_broken.dart';
+import 'package:agarwal_school/provider/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class GradientHeader extends StatelessWidget {
   final String name;
@@ -7,6 +9,7 @@ class GradientHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ThemeProvider>(context,listen: false);
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
@@ -35,8 +38,8 @@ class GradientHeader extends StatelessWidget {
             size: 30,
             shadows: [
               BoxShadow(
-                blurRadius: 10,
-                color: Theme.of(context).colorScheme.primary,
+                blurRadius: 10 * provider.blurValue!,
+                color: Theme.of(context).colorScheme.primary.withOpacity(provider.glowValue!),
               )
             ],
           )

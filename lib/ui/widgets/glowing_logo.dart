@@ -1,5 +1,7 @@
+import 'package:agarwal_school/provider/theme/theme_provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 class GlowingLogo extends StatelessWidget {
@@ -7,6 +9,7 @@ class GlowingLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ThemeProvider>(context);
     return Container(
                       width: 120, 
                       height: 130, 
@@ -17,8 +20,8 @@ class GlowingLogo extends StatelessWidget {
                             color: Theme.of(context)
                                 .colorScheme
                                 .primary
-                                .withOpacity(0.5),
-                            blurRadius: 40, 
+                                .withOpacity(provider.glowValue!),
+                            blurRadius: 40 * provider.blurValue!, 
                             spreadRadius: 1,
                           ),
                         ],

@@ -32,7 +32,7 @@ class _ThemeModesState extends State<ThemeColor> {
 
   @override
   Widget build(BuildContext context) {
-   int value = Hive.box("app-data").get("seedColor");
+   int value = Hive.box("app-data").get("seedColor",defaultValue: 0xff9c27b0);
     final provider = Provider.of<ThemeProvider>(context, listen: false);
     seedColor = Color(value);
     return Container(

@@ -1,9 +1,11 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:agarwal_school/core/icons/icons_broken.dart';
+import 'package:agarwal_school/provider/theme/theme_provider.dart';
 import 'package:agarwal_school/ui/widgets/gradient_header.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -24,6 +26,7 @@ class CustomSLider extends StatefulWidget {
 class _SliderState extends State<CustomSLider> {
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ThemeProvider>(context,listen: false);
     return Column(
       children: [
         const GradientHeader(name: "Our Campus"),
@@ -139,9 +142,9 @@ class _SliderState extends State<CustomSLider> {
                           decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                    blurRadius: 15,
+                                    blurRadius: 15 * provider.blurValue!,
                                     color:
-                                        Theme.of(context).colorScheme.primary,
+                                        Theme.of(context).colorScheme.primary.withOpacity(provider.glowValue!),
                                     spreadRadius: 0,
                                     offset: const Offset(0, -1))
                               ],
@@ -171,7 +174,7 @@ class _SliderState extends State<CustomSLider> {
               activeDotColor: Theme.of(context).colorScheme.primary,
               dotColor: Colors.grey.shade700,
               dotHeight: 10,
-              dotWidth: 10, // Visible dots limited to 4
+              dotWidth: 10,
               spacing: 10,
               radius: 8,
               fixedCenter: true,
