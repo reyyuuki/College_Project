@@ -1,5 +1,7 @@
+import 'package:agarwal_school/provider/theme/theme_provider.dart';
 import 'package:agarwal_school/ui/widgets/gradient_header.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Figures extends StatelessWidget {
   final List<dynamic> data;
@@ -7,6 +9,9 @@ class Figures extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ThemeProvider>(context);
+    double blur = provider.blurValue!;
+    double glow = provider.glowValue!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -45,7 +50,7 @@ class Figures extends StatelessWidget {
                               bottom: Radius.circular(10)),
                           boxShadow: [
                             BoxShadow(
-                                blurRadius: 10,
+                                blurRadius: 10 * blur,
                                 color:
                                     Theme.of(context).colorScheme.primary,
                                 spreadRadius: 0),

@@ -475,28 +475,34 @@ final backupData = {
           "Cooking/Needlework/Science/ Photography / Art and Craft/ Gardening/General Knowledge / Media and Reading/ Adventure/Dance/ Brass Band/Baking/Quiz/English Speech & Communication Programme."
     }
   ],
+  
+};
+
+final aboutData = {
   "aboutUs": [
-    {
-      "title": "School Philosophy",
-      "link": "https://laidlawschool.org/about-us/school-philosophy/",
-      "image": "https://laidlawschool.org/wp-content/uploads/2023/01/bg-school.jpg"
-    },
-    {
-      "title": "Mission & Vision",
-      "link": "https://laidlawschool.org/about-us/mission-vision/",
-      "image": "https://laidlawschool.org/wp-content/uploads/2023/02/mission-bg.jpg"
-    },
-    {
-      "title": "Board of Management",
-      "link": "https://laidlawschool.org/about-us/board-of-management/",
-      "image": "https://laidlawschool.org/wp-content/uploads/2023/02/bg-management.png"
-    },
-    {"title": "History", "link": "https://laidlawschool.org/about-us/history/",
-      "image": "https://laidlawschool.org/wp-content/uploads/2023/01/bg-school.jpg"},
-    {
-      "title": "Campus Tour",
-      "link": "https://laidlawschool.org/about-us/campus-tour/",
-      "image": "https://laidlawschool.org/wp-content/uploads/2023/02/bg-camp.jpg"
-    }
-  ]
+  {
+    "id": 1,
+    "title": "School Philosophy",
+    "link": "https://laidlawschool.org/about-us/school-philosophy/",
+    "image": "https://laidlawschool.org/wp-content/uploads/2023/01/bg-school.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Mission & Vision",
+    "link": "https://laidlawschool.org/about-us/mission-vision/",
+    "image": "https://laidlawschool.org/wp-content/uploads/2023/02/mission-bg.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Board of Management",
+    "link": "https://laidlawschool.org/about-us/board-of-management/",
+    "image": "https://laidlawschool.org/wp-content/uploads/2023/02/bg-management.png"
+  },
+  {
+    "id": 4,
+    "title": "History",
+    "link": "https://laidlawschool.org/about-us/history/",
+    "image": "https://laidlawschool.org/wp-content/uploads/2023/01/bg-school.jpg"
+  }
+]
 };

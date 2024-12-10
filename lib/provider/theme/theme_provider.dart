@@ -192,10 +192,12 @@ Future<void> materialTheme() async {
   void glowMultiplier(double value){
     _glowValue = value;
     Hive.box("app-data").put("glowValue",value);
+    notifyListeners();
   }
 
   void bluerMultiplier(double value){
     _blurValue = value;
     Hive.box("app-data").put("blurValue",value);
+    notifyListeners();
   }
 }

@@ -14,7 +14,9 @@ class EventsTitleList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ThemeProvider>(context,listen: false);
+    final provider = Provider.of<ThemeProvider>(context);
+    double blur = provider.blurValue!;
+    double glow = provider.glowValue!;
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(20),
@@ -68,8 +70,8 @@ class EventsTitleList extends StatelessWidget {
                         color: Theme.of(context)
                             .colorScheme
                             .primary
-                            .withOpacity(0.5),
-                        blurRadius: 10,
+                            .withOpacity(glow),
+                        blurRadius: 10 * blur,
                         spreadRadius: 0)
                   ],
                   gradient: LinearGradient(colors: [
@@ -90,8 +92,8 @@ class EventsTitleList extends StatelessWidget {
                               color: Theme.of(context)
                                   .colorScheme
                                   .primary
-                                  .withOpacity(provider.glowValue!),
-                              blurRadius: 5 * provider.blurValue!,
+                                  .withOpacity(glow),
+                              blurRadius: 5 * blur,
                             )
                           ]),
                       child: Icon(

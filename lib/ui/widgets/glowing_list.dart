@@ -1,7 +1,9 @@
 import 'package:agarwal_school/core/icons/icons_broken.dart';
 import 'package:agarwal_school/fallback_data/backup_data.dart';
+import 'package:agarwal_school/provider/theme/theme_provider.dart';
 import 'package:agarwal_school/screens/about/about_details.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class GlowingList extends StatelessWidget {
   const GlowingList({
@@ -10,6 +12,9 @@ class GlowingList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ThemeProvider>(context);
+    double blur = provider.blurValue!;
+    double glow = provider.glowValue!;
     return Container(
         padding: const EdgeInsets.all(5),
         margin: const EdgeInsets.all(10),
@@ -70,8 +75,8 @@ class GlowingList extends StatelessWidget {
                           color: Theme.of(context)
                               .colorScheme
                               .primary
-                              .withOpacity(0.5),
-                          blurRadius: 10,
+                              .withOpacity(glow),
+                          blurRadius: 10 * blur,
                           spreadRadius: 0)
                     ],
                     gradient: LinearGradient(colors: [
@@ -97,8 +102,8 @@ class GlowingList extends StatelessWidget {
                                 color: Theme.of(context)
                                     .colorScheme
                                     .primary
-                                    .withOpacity(0.4),
-                                blurRadius: 5,
+                                    .withOpacity(glow),
+                                blurRadius: 5 * blur,
                               )
                             ]),
                         child: Icon(

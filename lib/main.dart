@@ -97,282 +97,284 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ThemeProvider>(context);
-    return Scaffold(
-        key: _scffoldKey,
-        extendBody: true,
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        drawer:  Builder(
-          builder: (context) {
-            return Drawer(
-              backgroundColor: Theme.of(context).colorScheme.surface,
-              width: 180,
-              child: Column(
-                children: [
-                  Expanded(
-                    child: ListView(
-                      physics: const BouncingScrollPhysics(),
-                      children: [
-                        Container(
-                          height: 190,
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          child: const DrawerHeader(
-                            margin: EdgeInsets.zero,
-                            padding: EdgeInsets.zero,
-                            child: Center(
-                              child: GlowingLogo(),
+    return Consumer<ThemeProvider>(
+      builder: (conetxt, provider, child) => 
+       Scaffold(
+          key: _scffoldKey,
+          extendBody: true,
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          drawer:  Builder(
+            builder: (context) {
+              return Drawer(
+                backgroundColor: Theme.of(context).colorScheme.surface,
+                width: 180,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListView(
+                        physics: const BouncingScrollPhysics(),
+                        children: [
+                          Container(
+                            height: 190,
+                            decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: const DrawerHeader(
+                              margin: EdgeInsets.zero,
+                              padding: EdgeInsets.zero,
+                              child: Center(
+                                child: GlowingLogo(),
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        ...List.generate(
-                          _pages.length,
-                          (index) => GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _selectedIndex = index;
-                              });
-                              Future.delayed(const Duration(milliseconds: 100), () {
-                                Navigator.pop(context);
-                              });
-                            },
-                            child: Container(
-                              height: 45,
-                              margin: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              decoration: BoxDecoration(
-                                color: _selectedIndex == index
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Theme.of(context)
-                                        .colorScheme
-                                        .surfaceContainerHigh,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: _selectedIndex == index
-                                    ? [
-                                        BoxShadow(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary
-                                              .withOpacity(provider.glowValue!),
-                                          blurRadius: 20 * provider.blurValue!,
-                                          spreadRadius: 2,
-                                          offset: const Offset(0, 2),
-                                        ),
-                                      ]
-                                    : [
-                                        BoxShadow(
-                                            color: Colors.black.withOpacity(0.3),
-                                            blurRadius: 10,
-                                            spreadRadius: 0,
-                                            offset: const Offset(0, 2))
-                                      ],
-                              ),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    _getIconForIndex(index),
-                                    color: _selectedIndex == index
-                                        ? Theme.of(context).colorScheme.surface
-                                        : Theme.of(context)
-                                            .colorScheme
-                                            .inverseSurface,
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    _getLabelForIndex(index),
-                                    style: TextStyle(
-                                      fontFamily: "LexendDeca",
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          ...List.generate(
+                            _pages.length,
+                            (index) => GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _selectedIndex = index;
+                                });
+                                Future.delayed(const Duration(milliseconds: 100), () {
+                                  Navigator.pop(context);
+                                });
+                              },
+                              child: Container(
+                                height: 45,
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 5),
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                decoration: BoxDecoration(
+                                  color: _selectedIndex == index
+                                      ? Theme.of(context).colorScheme.primary
+                                      : Theme.of(context)
+                                          .colorScheme
+                                          .surfaceContainerHigh,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: _selectedIndex == index
+                                      ? [
+                                          BoxShadow(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary
+                                                .withOpacity(provider.glowValue!),
+                                            blurRadius: 20 * provider.blurValue!,
+                                            spreadRadius: 2,
+                                            offset: const Offset(0, 2),
+                                          ),
+                                        ]
+                                      : [
+                                          BoxShadow(
+                                              color: Colors.black.withOpacity(0.3),
+                                              blurRadius: 10,
+                                              spreadRadius: 0,
+                                              offset: const Offset(0, 2))
+                                        ],
+                                ),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      _getIconForIndex(index),
                                       color: _selectedIndex == index
                                           ? Theme.of(context).colorScheme.surface
                                           : Theme.of(context)
                                               .colorScheme
                                               .inverseSurface,
                                     ),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      _getLabelForIndex(index),
+                                      style: TextStyle(
+                                        fontFamily: "LexendDeca",
+                                        color: _selectedIndex == index
+                                            ? Theme.of(context).colorScheme.surface
+                                            : Theme.of(context)
+                                                .colorScheme
+                                                .inverseSurface,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            height: 40,
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.inverseSurface,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 15 * provider.blurValue!,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inverseSurface
+                                          .withOpacity(provider.glowValue!),
+                                      spreadRadius: 1,
+                                      offset: const Offset(0, 2))
+                                ]),
+                            child: CustomSlidingSegmentedControl(
+                                initialValue:
+                                    provider.isLightMode
+                                        ? 2
+                                        : 1,
+                                decoration:
+                                    const BoxDecoration(color: Colors.transparent),
+                                thumbDecoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .surfaceBright
+                                      .withOpacity(0.8),
+                                ),
+                                fixedWidth: 74,
+                                children: const {
+                                  1: Icon(Broken.moon),
+                                  2: Icon(Broken.sun_1)
+                                },
+                                onValueChanged: (v) {
+                                  v == 1
+                                      ? Provider.of<ThemeProvider>(context,
+                                              listen: false)
+                                          .darkTheme()
+                                      : Provider.of<ThemeProvider>(context,
+                                              listen: false)
+                                          .lightTheme();
+                                }),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(15),
+                      decoration: const BoxDecoration(
+                          border: Border(top: BorderSide(width: 1))),
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                Navigator.pop(context);
+                                Future.delayed(const Duration(milliseconds: 50), () {
+                                  Navigator.push(
+                                    context,
+                                    PageRouteBuilder(
+                                      transitionDuration:
+                                          const Duration(milliseconds: 400),
+                                      pageBuilder:
+                                          (context, animation, secondaryAnimation) {
+                                        return const Settings();
+                                      },
+                                      transitionsBuilder: (context, animation,
+                                          secondaryAnimation, child) {
+                                        const begin = Offset(1.0, 0.0);
+                                        const end = Offset.zero;
+                                        const curve = Curves.ease;
+              
+                                        var tween = Tween(begin: begin, end: end)
+                                            .chain(CurveTween(curve: curve));
+                                        var offsetAnimation = animation.drive(tween);
+              
+                                        return SlideTransition(
+                                            position: offsetAnimation, child: child);
+                                      },
+                                    ),
+                                  );
+                                });
+                              });
+                            },
+                            child: Container(
+                              height: 45,
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.primary,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary
+                                          .withOpacity(provider.glowValue!),
+                                      blurRadius: 20 * provider.blurValue!,
+                                      spreadRadius: 0,
+                                      offset: const Offset(0, 2))
+                                ],
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(Broken.setting_2,
+                                      color: Theme.of(context).colorScheme.surface),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    "Settings",
+                                    style: TextStyle(
+                                        fontFamily: "LexendDeca",
+                                        color: Theme.of(context).colorScheme.surface),
                                   ),
                                 ],
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(10),
-                          height: 40,
-                          padding: const EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.inverseSurface,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 15 * provider.blurValue!,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .inverseSurface
-                                        .withOpacity(provider.glowValue!),
-                                    spreadRadius: 1,
-                                    offset: const Offset(0, 2))
-                              ]),
-                          child: CustomSlidingSegmentedControl(
-                              initialValue:
-                                  provider.isLightMode
-                                      ? 2
-                                      : 1,
-                              decoration:
-                                  const BoxDecoration(color: Colors.transparent),
-                              thumbDecoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .surfaceBright
-                                    .withOpacity(0.8),
-                              ),
-                              fixedWidth: 74,
-                              children: const {
-                                1: Icon(Broken.moon),
-                                2: Icon(Broken.sun_1)
-                              },
-                              onValueChanged: (v) {
-                                v == 1
-                                    ? Provider.of<ThemeProvider>(context,
-                                            listen: false)
-                                        .darkTheme()
-                                    : Provider.of<ThemeProvider>(context,
-                                            listen: false)
-                                        .lightTheme();
-                              }),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(15),
-                    decoration: const BoxDecoration(
-                        border: Border(top: BorderSide(width: 1))),
-                    child: Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              Navigator.pop(context);
-                              Future.delayed(const Duration(milliseconds: 50), () {
-                                Navigator.push(
-                                  context,
-                                  PageRouteBuilder(
-                                    transitionDuration:
-                                        const Duration(milliseconds: 400),
-                                    pageBuilder:
-                                        (context, animation, secondaryAnimation) {
-                                      return const Settings();
-                                    },
-                                    transitionsBuilder: (context, animation,
-                                        secondaryAnimation, child) {
-                                      const begin = Offset(1.0, 0.0);
-                                      const end = Offset.zero;
-                                      const curve = Curves.ease;
-            
-                                      var tween = Tween(begin: begin, end: end)
-                                          .chain(CurveTween(curve: curve));
-                                      var offsetAnimation = animation.drive(tween);
-            
-                                      return SlideTransition(
-                                          position: offsetAnimation, child: child);
-                                    },
-                                  ),
-                                );
-                              });
-                            });
-                          },
-                          child: Container(
-                            height: 45,
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.primary,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .primary
-                                        .withOpacity(provider.glowValue!),
-                                    blurRadius: 20 * provider.blurValue!,
-                                    spreadRadius: 0,
-                                    offset: const Offset(0, 2))
-                              ],
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Broken.setting_2,
-                                    color: Theme.of(context).colorScheme.surface),
-                                const SizedBox(width: 10),
-                                Text(
-                                  "Settings",
-                                  style: TextStyle(
-                                      fontFamily: "LexendDeca",
-                                      color: Theme.of(context).colorScheme.surface),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-        ),
-        appBar: AppBar(
-          title: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "THE LAIDLAW MEMORIAL",
-                style: TextStyle(fontSize: 14, fontFamily: "LexendDeca"),
-              ),
-              Text(
-                "School & Junior College, Ketti",
-                style: TextStyle(fontSize: 12, fontFamily: "LexendDeca-thin"),
-              ),
-            ],
+                  ],
+                ),
+              );
+            }
           ),
-          forceMaterialTransparency: true,
-          leading: IconButton(
-              onPressed: () {
-                _scffoldKey.currentState?.openDrawer();
-              },
-              icon: const Icon(Broken.menu_1)),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: SizedBox(
-                height: 50,
-                width: 50,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        "https://laidlawschool.org/wp-content/themes/navin/assets/images/bg-logo.png",
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Shimmer.fromColors(
-                      baseColor: Colors.grey[900]!,
-                      highlightColor: Colors.grey[700]!,
-                      child: Container(
-                        color: Colors.grey[400],
-                        height: 250,
-                        width: double.infinity,
+          appBar: AppBar(
+            title: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "THE LAIDLAW MEMORIAL",
+                  style: TextStyle(fontSize: 14, fontFamily: "LexendDeca"),
+                ),
+                Text(
+                  "School & Junior College, Ketti",
+                  style: TextStyle(fontSize: 12, fontFamily: "LexendDeca-thin"),
+                ),
+              ],
+            ),
+            forceMaterialTransparency: true,
+            leading: IconButton(
+                onPressed: () {
+                  _scffoldKey.currentState?.openDrawer();
+                },
+                icon: const Icon(Broken.menu_1)),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          "https://laidlawschool.org/wp-content/themes/navin/assets/images/bg-logo.png",
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Colors.grey[900]!,
+                        highlightColor: Colors.grey[700]!,
+                        child: Container(
+                          color: Colors.grey[400],
+                          height: 250,
+                          width: double.infinity,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            )
-          ],
-        ),
-        body: _pages[_selectedIndex]);
+              )
+            ],
+          ),
+          body: _pages[_selectedIndex]),
+    );
   }
 }

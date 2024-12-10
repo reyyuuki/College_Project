@@ -26,7 +26,9 @@ class CustomSLider extends StatefulWidget {
 class _SliderState extends State<CustomSLider> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ThemeProvider>(context,listen: false);
+    final provider = Provider.of<ThemeProvider>(context);
+    double blur = provider.blurValue!;
+    double glow = provider.glowValue!;
     return Column(
       children: [
         const GradientHeader(name: "Our Campus"),
@@ -87,17 +89,17 @@ class _SliderState extends State<CustomSLider> {
                                   color: Theme.of(context).colorScheme.primary),
                               boxShadow: [
                                 BoxShadow(
-                                    blurRadius: 10,
+                                    blurRadius: 10 * blur,
                                     spreadRadius: 0,
                                     color: widget.isClickedList[index]
                                         ? Theme.of(context)
                                             .colorScheme
                                             .primary
-                                            .withOpacity(0.6)
+                                            .withOpacity(glow)
                                         : Theme.of(context)
                                             .colorScheme
                                             .surfaceContainer
-                                            .withOpacity(0.4))
+                                            .withOpacity(glow))
                               ]),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),

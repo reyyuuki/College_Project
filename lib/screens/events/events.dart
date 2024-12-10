@@ -1,6 +1,7 @@
 import 'package:agarwal_school/core/icons/icons_broken.dart';
 import 'package:agarwal_school/data/Scrapper/_scrapper.dart';
 import 'package:agarwal_school/fallback_data/backup_data.dart';
+import 'package:agarwal_school/provider/theme/theme_provider.dart';
 import 'package:agarwal_school/ui/events_layout_widgets/events_title_list.dart';
 import 'package:agarwal_school/ui/events_layout_widgets/images_list.dart';
 import 'package:agarwal_school/ui/events_layout_widgets/staggered_grid_view.dart';
@@ -70,6 +71,9 @@ Widget getLayout(Layout name){
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ThemeProvider>(context);
+    double blur = provider.blurValue!;
+    double glow = provider.glowValue!;
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
         body: ListView(
@@ -105,8 +109,8 @@ Widget getLayout(Layout name){
                       size: 30,
                       shadows: [
                         BoxShadow(
-                          blurRadius: 10,
-                          color: Theme.of(context).colorScheme.primary,
+                          blurRadius: 10 * blur,
+                          color: Theme.of(context).colorScheme.primary.withOpacity(glow),
                         )
                       ],
                     ),

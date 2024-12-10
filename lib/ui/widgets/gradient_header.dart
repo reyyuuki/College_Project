@@ -9,7 +9,7 @@ class GradientHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ThemeProvider>(context,listen: false);
+    final provider = Provider.of<ThemeProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
