@@ -1,7 +1,7 @@
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/fallback_data/backup_data.dart';
-import 'package:agarwal_school/provider/theme/theme_provider.dart';
-import 'package:agarwal_school/screens/about/about_details.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/fallback_data/backup_data.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/screens/about/about_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,9 +29,9 @@ class GlowingList extends StatelessWidget {
           padding: const EdgeInsets.all(0),
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
-          itemCount: backupData['aboutUs']?.length,
+          itemCount: aboutData.length,
           itemBuilder: (context, index) {
-            final item = backupData['aboutUs']?[index];
+            final item = aboutData[index];
             return GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -58,8 +58,7 @@ class GlowingList extends StatelessWidget {
                         pageBuilder:
                             (context, animation, secondaryAnimation) {
                           return AboutDetails(
-                              link: item['link']!,
-                              image: item['image'] ?? "",
+                              image: item['image']!,
                               title: item['title']!);
                         }));
               },
@@ -115,7 +114,7 @@ class GlowingList extends StatelessWidget {
                       width: 10,
                     ),
                     Text(
-                      item!['title']!,
+                      item['title']!,
                       style:
                           const TextStyle(fontFamily: "LexendDeca"),
                     ),

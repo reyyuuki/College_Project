@@ -1,6 +1,6 @@
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/provider/theme/theme_provider.dart';
-import 'package:agarwal_school/ui/theme_widgets/theme_template.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/ui/theme_widgets/theme_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

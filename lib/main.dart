@@ -1,14 +1,14 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/data/Scrapper/_scrapper.dart';
-import 'package:agarwal_school/provider/theme/theme_provider.dart';
-import 'package:agarwal_school/screens/about/about.dart';
-import 'package:agarwal_school/screens/enquiry/enquiry.dart';
-import 'package:agarwal_school/screens/events/events.dart';
-import 'package:agarwal_school/screens/home/home.dart';
-import 'package:agarwal_school/screens/settings/settings.dart';
-import 'package:agarwal_school/ui/widgets/glowing_logo.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/data/Scrapper/_scrapper.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/screens/about/about.dart';
+import 'package:school_app/screens/contact-us/contact_us.dart';
+import 'package:school_app/screens/events/events.dart';
+import 'package:school_app/screens/home/home.dart';
+import 'package:school_app/screens/settings/settings.dart';
+import 'package:school_app/ui/widgets/glowing_logo.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:custom_sliding_segmented_control/custom_sliding_segmented_control.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List _pages = [
     const HomePage(),
     const Events(),
-    const Enquiry(),
+    ContactUs(),
     const About(),
   ];
 
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
       case 1:
         return "Events";
       case 2:
-        return "Enquiry";
+        return "Contact";
       case 3:
         return "About";
       default:

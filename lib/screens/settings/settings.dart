@@ -1,8 +1,8 @@
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/provider/theme/theme_provider.dart';
-import 'package:agarwal_school/screens/settings/pages/_about.dart';
-import 'package:agarwal_school/screens/settings/pages/theme_setting.dart';
-import 'package:agarwal_school/screens/settings/pages/ui_settings.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/screens/settings/pages/_about.dart';
+import 'package:school_app/screens/settings/pages/theme_setting.dart';
+import 'package:school_app/screens/settings/pages/ui_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -152,7 +152,7 @@ class Settings extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(10),
               margin: const EdgeInsets.all(10),
-              height: 105,
+              height: 125,
               child: Column(
                 children: [
                   const Text("Want to reset all the settings",style: TextStyle(

@@ -1,5 +1,5 @@
-import 'package:agarwal_school/provider/theme/theme_provider.dart';
-import 'package:agarwal_school/ui/widgets/gradient_header.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/ui/widgets/gradient_header.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

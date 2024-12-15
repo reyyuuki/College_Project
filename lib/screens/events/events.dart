@@ -1,10 +1,10 @@
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/data/Scrapper/_scrapper.dart';
-import 'package:agarwal_school/fallback_data/backup_data.dart';
-import 'package:agarwal_school/provider/theme/theme_provider.dart';
-import 'package:agarwal_school/ui/events_layout_widgets/events_title_list.dart';
-import 'package:agarwal_school/ui/events_layout_widgets/images_list.dart';
-import 'package:agarwal_school/ui/events_layout_widgets/staggered_grid_view.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/data/Scrapper/_scrapper.dart';
+import 'package:school_app/fallback_data/backup_data.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/ui/events_layout_widgets/events_title_list.dart';
+import 'package:school_app/ui/events_layout_widgets/images_list.dart';
+import 'package:school_app/ui/events_layout_widgets/staggered_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +19,7 @@ enum Layout { grid, imageWithTitle, list }
 
 class _EventsState extends State<Events> {
   Map<String, dynamic>? data;
-  Layout selectedLayout = Layout.imageWithTitle;
+  Layout selectedLayout = Layout.list;
 
   @override
   void initState() {

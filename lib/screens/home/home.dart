@@ -1,11 +1,11 @@
-import 'package:agarwal_school/fallback_data/backup_data.dart';
-import 'package:agarwal_school/ui/widgets/activities_card.dart';
-import 'package:agarwal_school/ui/widgets/carousale.dart';
-import 'package:agarwal_school/ui/widgets/figures.dart';
-import 'package:agarwal_school/ui/widgets/info_card.dart';
-import 'package:agarwal_school/ui/widgets/slider.dart';
+import 'package:school_app/fallback_data/backup_data.dart';
+import 'package:school_app/ui/widgets/activities_card.dart';
+import 'package:school_app/ui/widgets/carousale.dart';
+import 'package:school_app/ui/widgets/figures.dart';
+import 'package:school_app/ui/widgets/info_card.dart';
+import 'package:school_app/ui/widgets/slider.dart';
 import 'package:flutter/material.dart';
-import 'package:agarwal_school/data/Scrapper/_scrapper.dart';
+import 'package:school_app/data/Scrapper/_scrapper.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -56,8 +56,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           CustomSLider(
               data: data!,
-              controller: _controller,
-              isClickedList: isClickedList!),
+              controller: _controller),
           const SizedBox(
             height: 20,
           ),

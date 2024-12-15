@@ -1,7 +1,7 @@
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/ui/theme_widgets/custom_color.dart';
-import 'package:agarwal_school/ui/theme_widgets/theme_color.dart';
-import 'package:agarwal_school/ui/theme_widgets/theme_modes.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/ui/theme_widgets/custom_color.dart';
+import 'package:school_app/ui/theme_widgets/theme_color.dart';
+import 'package:school_app/ui/theme_widgets/theme_modes.dart';
 import 'package:flutter/material.dart';
 
 class ThemeSetting extends StatefulWidget {

@@ -1,6 +1,6 @@
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/data/Scrapper/_scrapper.dart';
-import 'package:agarwal_school/ui/widgets/image_with_title.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/data/Scrapper/_scrapper.dart';
+import 'package:school_app/ui/widgets/image_with_title.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:text_scroll/text_scroll.dart';

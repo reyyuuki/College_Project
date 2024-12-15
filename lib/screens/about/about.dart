@@ -1,8 +1,8 @@
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/fallback_data/backup_data.dart';
-import 'package:agarwal_school/provider/theme/theme_provider.dart';
-import 'package:agarwal_school/ui/about_layouts.dart/about_image_list.dart';
-import 'package:agarwal_school/ui/widgets/glowing_list.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/fallback_data/backup_data.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/ui/about_layouts.dart/about_image_list.dart';
+import 'package:school_app/ui/widgets/glowing_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +21,7 @@ class _AboutState extends State<About> {
     double blur = provider.blurValue!;
     double glow = provider.glowValue!;
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: ListView(
         children: [
           Padding(
@@ -67,7 +68,7 @@ class _AboutState extends State<About> {
           ),
           !isImage
               ? const GlowingList()
-              : AboutImageList(data: backupData['aboutUs']!)
+              : AboutImageList(data: aboutData)
         ],
       ),
     );

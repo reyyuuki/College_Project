@@ -1,5 +1,5 @@
-import 'package:agarwal_school/screens/events/event_details.dart';
-import 'package:agarwal_school/ui/widgets/image_with_title.dart';
+import 'package:school_app/screens/events/event_details.dart';
+import 'package:school_app/ui/widgets/image_with_title.dart';
 import 'package:flutter/material.dart';
 
 class ImagesList extends StatelessWidget {

@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/provider/theme/theme_provider.dart';
-import 'package:agarwal_school/ui/widgets/gradient_header.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/ui/widgets/gradient_header.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,12 +12,10 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class CustomSLider extends StatefulWidget {
   final Map<String, dynamic> data;
   final PageController controller;
-  List<bool> isClickedList;
-  CustomSLider(
+  const CustomSLider(
       {super.key,
       required this.data,
-      required this.controller,
-      required this.isClickedList});
+      required this.controller,});
 
   @override
   State<CustomSLider> createState() => _SliderState();
@@ -62,75 +60,6 @@ class _SliderState extends State<CustomSLider> {
                           errorWidget: (context, error, stackTrace) {
                             return const Icon(Icons.error);
                           },
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 5,
-                      right: 5,
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            widget.isClickedList[index] =
-                                !widget.isClickedList[index];
-                          });
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          curve: Curves.easeInOut,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .surfaceContainer
-                                  .withOpacity(0.4),
-                              border: Border.all(
-                                  width: 1,
-                                  color: Theme.of(context).colorScheme.primary),
-                              boxShadow: [
-                                BoxShadow(
-                                    blurRadius: 10 * blur,
-                                    spreadRadius: 0,
-                                    color: widget.isClickedList[index]
-                                        ? Theme.of(context)
-                                            .colorScheme
-                                            .primary
-                                            .withOpacity(glow)
-                                        : Theme.of(context)
-                                            .colorScheme
-                                            .surfaceContainer
-                                            .withOpacity(glow))
-                              ]),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: AnimatedSwitcher(
-                              duration: const Duration(milliseconds: 200),
-                              transitionBuilder: (child, animation) {
-                                return ScaleTransition(
-                                    scale: animation, child: child);
-                              },
-                              child: Icon(
-                                shadows: !widget.isClickedList[index]
-                                    ? [
-                                        BoxShadow(
-                                            blurRadius: 10,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary)
-                                      ]
-                                    : [],
-                                widget.isClickedList[index]
-                                    ? Icons.favorite
-                                    : Broken.heart,
-                                key:
-                                    ValueKey<bool>(widget.isClickedList[index]),
-                                color: widget.isClickedList[index]
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Theme.of(context).colorScheme.primary,
-                                size: 25,
-                              ),
-                            ),
-                          ),
                         ),
                       ),
                     ),

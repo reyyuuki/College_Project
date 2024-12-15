@@ -1,5 +1,5 @@
-import 'package:agarwal_school/ui/widgets/glowing_logo.dart';
-import 'package:agarwal_school/ui/widgets/gradient_header.dart';
+import 'package:school_app/ui/widgets/glowing_logo.dart';
+import 'package:school_app/ui/widgets/gradient_header.dart';
 import 'package:flutter/material.dart';
 
 class InfoCard extends StatelessWidget {

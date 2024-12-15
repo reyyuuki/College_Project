@@ -1,4 +1,4 @@
-import 'package:agarwal_school/ui/widgets/gradient_header.dart';
+import 'package:school_app/ui/widgets/gradient_header.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';

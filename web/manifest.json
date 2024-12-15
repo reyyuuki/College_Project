@@ -1,6 +1,6 @@
 {
-    "name": "agarwal_school",
-    "short_name": "agarwal_school",
+    "name": "school_app",
+    "short_name": "school_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,11 +1,13 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/ui/widgets/glowing_logo.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/ui/widgets/glowing_logo.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutSettings extends StatelessWidget {
@@ -23,6 +25,9 @@ class AboutSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final provider = Provider.of<ThemeProvider>(context);
+    double glow = provider.glowValue!;
+    double blur = provider.blurValue!;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
@@ -81,7 +86,7 @@ class AboutSettings extends StatelessWidget {
               border: Border.all(width: 1,color: Theme.of(context).colorScheme.primary),
               boxShadow: [
               BoxShadow(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.6), blurRadius: 10),
+                  color: Theme.of(context).colorScheme.primary.withOpacity(glow), blurRadius: 10 * blur),
             ], borderRadius: BorderRadius.circular(20)),
             child: ListTile(
               onTap: () {
@@ -105,13 +110,13 @@ class AboutSettings extends StatelessWidget {
                         color: Theme.of(context)
                             .colorScheme
                             .primary
-                            .withOpacity(0.3),
-                        blurRadius: 10)
+                            .withOpacity(glow),
+                        blurRadius: 10 * blur)
                   ]),
                   child: Icon(
                     shadows: [
                       BoxShadow(
-                          color: Theme.of(context).colorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary.withOpacity(glow),
                           blurRadius: 10)
                     ],
                     Ionicons.logo_github,
@@ -133,8 +138,8 @@ class AboutSettings extends StatelessWidget {
                       size: 30,
                       shadows: [
                         BoxShadow(
-                            color: Theme.of(context).colorScheme.primary,
-                            blurRadius: 10)
+                            color: Theme.of(context).colorScheme.primary.withOpacity(glow),
+                            blurRadius: 10 * blur)
                       ],
                     ),
                     "Github",
@@ -152,8 +157,8 @@ class AboutSettings extends StatelessWidget {
                       size: 30,
                       shadows: [
                         BoxShadow(
-                            color: Theme.of(context).colorScheme.primary,
-                            blurRadius: 10)
+                            color: Theme.of(context).colorScheme.primary.withOpacity(glow),
+                            blurRadius: 10 * blur)
                       ],
                     ),
                     "Discord",
@@ -171,8 +176,8 @@ class AboutSettings extends StatelessWidget {
                       size: 30,
                       shadows: [
                         BoxShadow(
-                            color: Theme.of(context).colorScheme.primary,
-                            blurRadius: 10)
+                            color: Theme.of(context).colorScheme.primary.withOpacity(glow),
+                            blurRadius: 10 * blur)
                       ],
                     ),
                     "Telegram",
@@ -190,8 +195,8 @@ class AboutSettings extends StatelessWidget {
                       size: 30,
                       shadows: [
                         BoxShadow(
-                            color: Theme.of(context).colorScheme.primary,
-                            blurRadius: 10)
+                            color: Theme.of(context).colorScheme.primary.withOpacity(glow),
+                            blurRadius: 10 * blur)
                       ],
                     ),
                     "Reddit",
@@ -207,6 +212,7 @@ class AboutSettings extends StatelessWidget {
 
   GestureDetector list_tile(double width, BuildContext context, Icon icon,
       String name, String subTitle, String url) {
+        final provider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
       onTap: () {
         _launchURL(url);
@@ -219,7 +225,7 @@ class AboutSettings extends StatelessWidget {
               border: Border.all(width: 1,color: Theme.of(context).colorScheme.primary),
               boxShadow: [
               BoxShadow(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.6), blurRadius: 10),
+                  color: Theme.of(context).colorScheme.primary.withOpacity(provider.glowValue!), blurRadius: 10 * provider.blurValue!),
             ], borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -229,12 +235,8 @@ class AboutSettings extends StatelessWidget {
                 children: [
                   Container(
                       decoration: BoxDecoration(boxShadow: [
-                        BoxShadow(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withOpacity(0.4),
-                            blurRadius: 10)
+                       BoxShadow(
+                  color: Theme.of(context).colorScheme.primary.withOpacity(provider.glowValue!), blurRadius: 1 * provider.blurValue!)
                       ], borderRadius: BorderRadius.circular(50)),
                       child: icon),
                   const SizedBox(

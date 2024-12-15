@@ -1,8 +1,6 @@
-import 'dart:developer';
-
-import 'package:agarwal_school/core/icons/icons_broken.dart';
-import 'package:agarwal_school/provider/theme/theme_provider.dart';
-import 'package:agarwal_school/ui/theme_widgets/custom_color_template.dart';
+import 'package:school_app/core/icons/icons_broken.dart';
+import 'package:school_app/provider/theme/theme_provider.dart';
+import 'package:school_app/ui/theme_widgets/custom_color_template.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -64,17 +62,18 @@ class _ThemeModesState extends State<CustomColor> {
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemCount: colorMap.length,
-                itemBuilder: (context,index) {
+                itemBuilder: (context, index) {
                   String colorName = color[index];
                   return GestureDetector(
                       onTap: () {
-                        log(colorMap[colorName].toString());
-                        (context as Element).markNeedsBuild();
-                        provider.updateSeedColor(colorMap[colorName]!);
+                        setState(() {
+                          provider.updateSeedColor(colorMap[colorName]!);
+                        });
                       },
                       child: CustomColorTemplate(
                           color: colorMap[colorName]!,
-                          isBorder: colorMap[colorName]?.value == provider.seedColor?.value,
+                          isBorder: colorMap[colorName]?.value ==
+                              provider.seedColor.value,
                           name: colorName));
                 },
               ),

@@ -1,5 +1,5 @@
-import 'package:agarwal_school/fallback_data/backup_data.dart';
-import 'package:agarwal_school/ui/widgets/gradient_header.dart';
+import 'package:school_app/fallback_data/backup_data.dart';
+import 'package:school_app/ui/widgets/gradient_header.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 

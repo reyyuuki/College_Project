@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:agarwal_school/provider/theme/theme.dart';
+import 'package:school_app/provider/theme/theme.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -54,7 +54,9 @@ class ThemeProvider with ChangeNotifier {
     _isDarkMode = false;
     _isLightMode = true;
     _isMaterial = true;
-    _variant = "TonalSpot"; 
+    _variant = "TonalSpot";
+    glowMultiplier(_glowValue!);
+    bluerMultiplier(_blurValue!);
     setPaletteColor(_variant);
     materialTheme();
   }
