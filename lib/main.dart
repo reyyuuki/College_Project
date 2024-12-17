@@ -18,7 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
+ WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox("app-data");
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
@@ -35,6 +35,7 @@ void main() async{
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
