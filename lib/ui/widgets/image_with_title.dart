@@ -50,22 +50,25 @@ class ImageWithTitle extends StatelessWidget {
                         },
                       ),
                     )
-                  : CachedNetworkImage(
-                      imageUrl: image,
-                      fit: BoxFit.cover,
-                      placeholder: (context, url) => Shimmer.fromColors(
-                        baseColor: Colors.grey[900]!,
-                        highlightColor: Colors.grey[700]!,
-                        child: Container(
-                          color: Colors.grey[400],
-                          height: 300,
-                          width: double.infinity,
+                  : Hero(
+                    tag: title,
+                    child: CachedNetworkImage(
+                        imageUrl: image,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: Colors.grey[900]!,
+                          highlightColor: Colors.grey[700]!,
+                          child: Container(
+                            color: Colors.grey[400],
+                            height: 300,
+                            width: double.infinity,
+                          ),
                         ),
+                        errorWidget: (context, error, stackTrace) {
+                          return const Icon(Icons.error);
+                        },
                       ),
-                      errorWidget: (context, error, stackTrace) {
-                        return const Icon(Icons.error);
-                      },
-                    ),
+                  ),
             ),
           ),
           Container(
