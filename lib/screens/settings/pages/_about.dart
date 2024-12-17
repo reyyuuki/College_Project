@@ -86,7 +86,7 @@ class AboutSettings extends StatelessWidget {
               border: Border.all(width: 1,color: Theme.of(context).colorScheme.primary),
               boxShadow: [
               BoxShadow(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(glow), blurRadius: 10 * blur),
+                  color: Theme.of(context).colorScheme.primary.withOpacity(glow), blurRadius: 5 * blur),
             ], borderRadius: BorderRadius.circular(20)),
             child: ListTile(
               onTap: () {
@@ -104,25 +104,16 @@ class AboutSettings extends StatelessWidget {
                     fontSize: 12,
                     fontStyle: FontStyle.italic),
               ),
-              trailing: Container(
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withOpacity(glow),
-                        blurRadius: 10 * blur)
-                  ]),
-                  child: Icon(
-                    shadows: [
-                      BoxShadow(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(glow),
-                          blurRadius: 10)
-                    ],
-                    Ionicons.logo_github,
-                    size: 30,
-                    color: Theme.of(context).colorScheme.primary,
-                  )),
+              trailing: Icon(
+                shadows: [
+                  BoxShadow(
+                      color: Theme.of(context).colorScheme.primary.withOpacity(glow),
+                      blurRadius: 10)
+                ],
+                Ionicons.logo_github,
+                size: 30,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ),
           Padding(
@@ -225,7 +216,7 @@ class AboutSettings extends StatelessWidget {
               border: Border.all(width: 1,color: Theme.of(context).colorScheme.primary),
               boxShadow: [
               BoxShadow(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(provider.glowValue!), blurRadius: 10 * provider.blurValue!),
+                  color: Theme.of(context).colorScheme.primary.withOpacity(provider.glowValue!), blurRadius: 5 * provider.blurValue!),
             ], borderRadius: BorderRadius.circular(20)),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -233,12 +224,7 @@ class AboutSettings extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Container(
-                      decoration: BoxDecoration(boxShadow: [
-                       BoxShadow(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(provider.glowValue!), blurRadius: 1 * provider.blurValue!)
-                      ], borderRadius: BorderRadius.circular(50)),
-                      child: icon),
+                  icon,
                   const SizedBox(
                     width: 15,
                   ),
@@ -271,7 +257,7 @@ class AboutSettings extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           border: Border.all(
-              width: 2, color: Theme.of(context).colorScheme.secondary),
+              width: 2, color: Theme.of(context).colorScheme.primary),
           borderRadius: BorderRadius.circular(100)),
       child: Padding(
         padding: const EdgeInsets.all(3),

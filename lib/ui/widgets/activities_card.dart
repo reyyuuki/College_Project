@@ -2,6 +2,7 @@ import 'package:school_app/fallback_data/backup_data.dart';
 import 'package:school_app/ui/widgets/gradient_header.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ActivitiesCard extends StatelessWidget {
   const ActivitiesCard({super.key});
@@ -31,6 +32,15 @@ class ActivitiesCard extends StatelessWidget {
                       imageUrl: item['image']!,
                       filterQuality: FilterQuality.high,
                       fit: BoxFit.cover,
+                       placeholder: (context, url) => Shimmer.fromColors(
+                                baseColor: Colors.grey[900]!,
+                                highlightColor: Colors.grey[700]!,
+                                child: Container(
+                                  color: Colors.grey[400],
+                                  height: 250,
+                                  width: double.infinity,
+                                ),
+                              ),
                     ),
                   ),
                   Container(
