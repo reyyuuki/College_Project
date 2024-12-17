@@ -1,4 +1,4 @@
-package com.example.school_app
+package com.example.laidlaw_high
 
 import io.flutter.embedding.android.FlutterActivity
 
