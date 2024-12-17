@@ -38,26 +38,26 @@ dev_dependencies:
 
 flutter_launcher_icons:
   android: "ic_launcher"
-  image_path: "assets/icon/icon.png"
+  ios: true
+  image_path: "assets/icon/logo.png"
   min_sdk_android: 21
   windows:
     generate: true
-    image_path: "assets/icon/icon.png"
-    icon_size: 48 
+    image_path: "assets/icon/logo.png"
+    icon_size: 48
   macos:
     generate: true
-    image_path: "assets/icon/icon.png"
+    image_path: "assets/icon/logo.png"
   linux:
     generate: true
-    image_path: "assets/icon/icon.png"
+    image_path: "assets/icon/logo.png"
+
 
 flutter_native_splash:
-  android: true
-  ios: true
-  web: true
-
-  color: "#d4e4ed"
-  image: "assets/icon/icon.png"
+  color: "#ffffff"
+  image: assets/icon/logo.png
+  color_dark: "#121212"
+  image_dark: assets/icon/logo.png
 
 flutter:
   uses-material-design: true
